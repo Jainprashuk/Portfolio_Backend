@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const authRoutes = require('./Routes/AuthRoutes.js');
 const formRoutes = require('./Routes/FormRoutes.js');
 const DataRoutes = require('./Routes/DataRoutes.js')
+const visitRoutes = require('./Routes/VisitsRoutes.js')
 const cors = require('cors')
 
 const mongoose = require('mongoose');
@@ -28,6 +29,7 @@ app.use(express.json()); // Parse JSON bodies
 app.use( authRoutes);
 app.use( formRoutes);
 app.use(DataRoutes)
+app.use(visitRoutes)
 
 
 
