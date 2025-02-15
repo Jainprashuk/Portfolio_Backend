@@ -8,7 +8,7 @@ function getClientIP(req) {
 
 // Function to get geolocation based on IP
 async function getLocationByIP(ip) {
-  const url = `http://api.ipstack.com/${ip}?access_key=YOUR_API_KEY`;
+  const url = `http://api.ipstack.com/${ip}?access_key=c0280e2e43cd50e6c2acaffb422c78b2`;
 
   try {
     const response = await fetch(url);
