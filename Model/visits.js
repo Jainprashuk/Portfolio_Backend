@@ -3,16 +3,16 @@ const mongoose = require('mongoose');
 
 const visitSchema = new mongoose.Schema({
     userId: { type: String, required: true },
-    timestamp: { type: Date, required: true },
-    ip: { type: String, required: false }, // Make ip optional
-    count: { type: Number, default: 1 },  // Add count field
+    count: { type: Number, default: 1 },
+    ip: { type: String, required: true },
     location: {
-      country: { type: String, default: null },
-      region: { type: String, default: null },
-      city: { type: String, default: null },
-      latitude: { type: Number, default: null },
-      longitude: { type: Number, default: null },
+      country: String,
+      region: String,
+      city: String,
+      latitude: Number,
+      longitude: Number,
     },
+    timestamps: { type: [Date], required: true },  // Array of timestamps
   });
 // const Visit = mongoose.models.Visit || mongoose.model("Visit", visitSchema);
 

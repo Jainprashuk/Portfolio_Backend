@@ -46,17 +46,17 @@ exports.Visitcontroller = async (req, res) => {
       const existingVisit = await Visit.findOne({ userId });
 
       if (existingVisit) {
-        // If the user exists, increment the count by 1
+        // If the user exists, increment the count and add the new timestamp to the timestamps array
         existingVisit.count += 1;
-        existingVisit.timestamp = timestamp;  // Optional: Update timestamp if necessary
+        existingVisit.timestamps.push(timestamp); // Add the new timestamp to the array
         existingVisit.ip = ip;  // Store the IP address
         existingVisit.location = location || existingVisit.location; // Store location if new
         await existingVisit.save();  // Save the updated visit record
 
-        return res.status(200).json({ message: "Visit count incremented successfully." });
+        return res.status(200).json({ message: "Visit tracked successfully and timestamp added." });
       } else {
         // If the user doesn't exist, create a new visit record
-        const newVisit = new Visit({ userId, timestamp, ip, location });
+        const newVisit = new Visit({ userId, timestamps: [timestamp], ip, location });
         await newVisit.save();
 
         return res.status(200).json({ message: "Visit tracked successfully." });
