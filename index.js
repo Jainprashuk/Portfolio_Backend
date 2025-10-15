@@ -2,8 +2,9 @@ const express = require('express');
 const dotenv = require('dotenv');
 const authRoutes = require('./Routes/AuthRoutes.js');
 const formRoutes = require('./Routes/FormRoutes.js');
-const DataRoutes = require('./Routes/DataRoutes.js')
-const visitRoutes = require('./Routes/VisitsRoutes.js')
+const DataRoutes = require('./Routes/DataRoutes.js');
+const visitRoutes = require('./Routes/VisitsRoutes.js');
+const healthRoutes = require('./Routes/HealthRoutes.js');
 const cors = require('cors')
 
 const mongoose = require('mongoose');
@@ -26,10 +27,13 @@ app.use(cors())
 app.use(express.json()); // Parse JSON bodies
 
 // Routes
-app.use( authRoutes);
-app.use( formRoutes);
-app.use(DataRoutes)
-app.use(visitRoutes)
+app.use(authRoutes);
+app.use(formRoutes);
+app.use(DataRoutes);
+app.use(visitRoutes);
+app.use(healthRoutes);
+
+
 
 
 
