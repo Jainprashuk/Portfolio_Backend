@@ -6,6 +6,7 @@ const {
   adminList,
   adminGet,
   adminCreate,
+  adminUpdate,
   adminApprove,
   adminUnpublish,
   adminDelete,
@@ -21,6 +22,7 @@ router.get('/posts/:slug', getPublishedBySlug);
 router.get('/admin/posts', requireAdmin, adminList);
 router.get('/admin/posts/:slug', requireAdmin, adminGet);
 router.post('/admin/posts', requireAdmin, adminCreate);
+router.patch('/admin/posts/:slug', requireAdmin, adminUpdate);
 router.post('/admin/posts/:slug/approve', requireAdmin, adminApprove);
 router.post('/admin/posts/:slug/unpublish', requireAdmin, adminUnpublish);
 router.delete('/admin/posts/:slug', requireAdmin, adminDelete);

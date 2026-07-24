@@ -92,6 +92,28 @@ exports.adminCreate = async (req, res) => {
   }
 };
 
+// PATCH /admin/posts/:slug -> edit title/description/content (e.g. to resolve
+// [AUTHOR:] markers before publishing).
+exports.adminUpdate = async (req, res) => {
+  try {
+    const { title, description, content } = req.body || {};
+    const update = {};
+    if (typeof title === 'string' && title.trim()) update.title = title;
+    if (typeof description === 'string') update.description = description;
+    if (typeof content === 'string') update.content = content;
+
+    if (Object.keys(update).length === 0) {
+      return res.status(400).json({ message: 'Nothing to update' });
+    }
+
+    const post = await Post.findOneAndUpdate({ slug: req.params.slug }, update, { new: true });
+    if (!post) return res.status(404).json({ message: 'Not found' });
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // POST /admin/posts/:slug/approve -> flip a draft to published.
 exports.adminApprove = async (req, res) => {
   try {
