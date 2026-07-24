@@ -5,6 +5,9 @@ const formRoutes = require('./Routes/FormRoutes.js');
 const DataRoutes = require('./Routes/DataRoutes.js');
 const visitRoutes = require('./Routes/VisitsRoutes.js');
 const healthRoutes = require('./Routes/HealthRoutes.js');
+const likeRoutes = require('./Routes/LikeRoutes.js');
+const postRoutes = require('./Routes/PostRoutes.js');
+const adminAuthRoutes = require('./Routes/AdminAuthRoutes.js');
 const cors = require('cors')
 
 const mongoose = require('mongoose');
@@ -32,6 +35,9 @@ app.use(formRoutes);
 app.use(DataRoutes);
 app.use(visitRoutes);
 app.use(healthRoutes);
+app.use(likeRoutes);
+app.use(postRoutes);
+app.use(adminAuthRoutes);
 
 
 
